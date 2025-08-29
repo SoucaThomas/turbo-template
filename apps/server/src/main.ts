@@ -21,7 +21,7 @@ async function bootstrap() {
   // Mount BetterAuth before body parsers
   expressApp.all(
     /^\/api\/auth\/.*/,
-    toNodeHandler(authService.instance.handler),
+    toNodeHandler(authService.instance.handler)
   );
 
   // Re-enable Nest's JSON body parser AFTER mounting BetterAuth

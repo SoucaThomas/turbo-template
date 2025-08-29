@@ -6,6 +6,6 @@ export const auth = betterAuth({
     {},
     {
       provider: 'pg',
-    },
+    }
   ),
 });
