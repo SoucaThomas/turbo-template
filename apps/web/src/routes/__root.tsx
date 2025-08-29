@@ -1,14 +1,18 @@
-import Header from '@/components/header';
+import Header from '@/components/layout/Header';
 import Loader from '@/components/loader';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
+import { TanStackDevtools } from '@tanstack/react-devtools';
 import {
   HeadContent,
   Outlet,
   createRootRouteWithContext,
   useRouterState,
 } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
+import {
+  TanStackRouterDevtools,
+  TanStackRouterDevtoolsPanel,
+} from '@tanstack/react-router-devtools';
 import '../index.css';
 
 export interface RouterAppContext {}
@@ -55,6 +59,17 @@ function RootComponent() {
         <Toaster richColors />
       </ThemeProvider>
       <TanStackRouterDevtools position='bottom-left' />
+      <TanStackDevtools
+        config={{
+          position: 'bottom-right',
+        }}
+        plugins={[
+          {
+            name: 'Tanstack Router',
+            render: <TanStackRouterDevtoolsPanel />,
+          },
+        ]}
+      />
     </>
   );
 }
