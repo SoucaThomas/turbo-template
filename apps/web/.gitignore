@@ -22,6 +22,10 @@
 .tanstack/
 .nitro/
 
+# Generated files
+routeTree.gen.ts
+**/*.gen.ts
+
 # Deployment
 .vercel
 .netlify

@@ -1,18 +1,26 @@
-import { Link } from '@tanstack/react-router';
-
-import { Button } from '@/components/ui/button';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { ModeToggle } from '@/components/mode-toggle';
-import { useNavigate } from '@tanstack/react-router';
+import UserMenu from '../user-menu';
+import { authClient } from '@/lib/auth-client';
+import { Button } from '../ui/button';
 
-export default function Header() {
+interface HeaderProps {
+  links: {
+    label: string;
+    to: string;
+  }[];
+}
+
+export default function Header({ links }: HeaderProps) {
   const navigate = useNavigate();
+  const { data: session } = authClient.useSession();
 
-  const handleSignIn = () => {
-    navigate({ to: '/login', search: { form: 'signin' } });
+  const handleSignIn = async () => {
+    await navigate({ to: '/login', search: { form: 'signin' } });
   };
 
-  const handleSignUp = () => {
-    navigate({ to: '/login', search: { form: 'signup' } });
+  const handleSignUp = async () => {
+    await navigate({ to: '/login', search: { form: 'signup' } });
   };
 
   return (
@@ -26,24 +34,44 @@ export default function Header() {
           </Link>
         </div>
 
+        {/* Navigation - Center Column */}
+        <nav className='flex-1 flex items-center justify-center space-x-2 gap-4'>
+          {links.map(link => (
+            <Link
+              key={link.label}
+              to={link.to}
+              className='text-sm font-medium'
+              activeProps={{ className: 'text-primary' }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
         {/* Action Buttons - Right Column */}
-        <div className='flex items-center space-x-3 justify-end flex-1'>
-          <Button
-            variant='ghost'
-            size='sm'
-            className='h-9 px-4 text-sm font-medium'
-            onClick={handleSignIn}
-          >
-            Sign In
-          </Button>
-          <Button
-            variant='ghost'
-            size='sm'
-            className='h-9 px-4 text-sm font-medium'
-            onClick={handleSignUp}
-          >
-            Sign Up
-          </Button>
+        <div className='flex items-center space-x-3'>
+          {session?.user ? (
+            <UserMenu />
+          ) : (
+            <>
+              <Button
+                variant='ghost'
+                size='sm'
+                className='h-9 px-4 text-sm font-medium'
+                onClick={() => void handleSignIn()}
+              >
+                Sign In
+              </Button>
+              <Button
+                variant='ghost'
+                size='sm'
+                className='h-9 px-4 text-sm font-medium'
+                onClick={() => void handleSignUp()}
+              >
+                Sign Up
+              </Button>
+            </>
+          )}
           <ModeToggle />
         </div>
       </div>

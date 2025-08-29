@@ -3,7 +3,7 @@ import SignUpForm from '@/components/sign-up-form';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState, useEffect } from 'react';
 
-export const Route = createFileRoute('/login')({
+export const Route = createFileRoute('/login/')({
   component: RouteComponent,
   validateSearch: (search: Record<string, unknown>) => ({
     form: search.form as 'signin' | 'signup' | undefined,

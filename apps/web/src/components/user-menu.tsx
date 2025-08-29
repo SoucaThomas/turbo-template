@@ -23,7 +23,9 @@ export default function UserMenu() {
   if (!session || !session.user) {
     return (
       <Button variant='outline' asChild>
-        <Link to='/login'>Sign In</Link>
+        <Link to='/login' search={{ form: 'signin' }}>
+          Sign In
+        </Link>
       </Button>
     );
   }

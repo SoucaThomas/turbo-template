@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AuthModule } from '@mguay/nestjs-better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { betterAuth } from 'better-auth';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { DATABASE_CONNECTION } from './database/database-connection';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { DatabaseModule } from './database/database.module';
@@ -20,8 +20,50 @@ import { UsersModule } from './users/users.module';
           }),
           emailAndPassword: {
             enabled: true,
+            requireEmailVerification: true,
+            sendVerificationEmail: true,
+            sendWelcomeEmail: true,
+            sendPasswordChangedEmail: true,
+            sendPasswordResetEmail: true,
+          },
+          oauth: {
+            enabled: true,
+            providers: [
+              {
+                id: 'google',
+                type: 'oidc',
+                clientId: process.env.GOOGLE_CLIENT_ID || '',
+                clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+                config: {
+                  issuer: 'https://accounts.google.com',
+                  authorizationEndpoint:
+                    'https://accounts.google.com/o/oauth2/v2/auth',
+                  tokenEndpoint: 'https://oauth2.googleapis.com/token',
+                  userinfoEndpoint:
+                    'https://www.googleapis.com/oauth2/v3/userinfo',
+                },
+              },
+              {
+                id: 'github',
+                type: 'oauth',
+                clientId: process.env.GITHUB_CLIENT_ID || '',
+                clientSecret: process.env.GITHUB_CLIENT_SECRET || '',
+                config: {
+                  authorizationEndpoint:
+                    'https://github.com/login/oauth/authorize',
+                  tokenEndpoint: 'https://github.com/login/oauth/access_token',
+                  userinfoEndpoint: 'https://api.github.com/user',
+                },
+              },
+            ],
+          },
+          session: {
+            expiresIn: 60 * 60 * 24 * 7, // 7 days
+            updateAge: 60 * 60 * 24, // 1 day
+            generateId: () => crypto.randomUUID(),
           },
           trustedOrigins: ['http://localhost:3000'],
+          basePath: '/api/auth',
         }),
       }),
       inject: [DATABASE_CONNECTION],

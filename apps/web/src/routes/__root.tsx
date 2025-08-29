@@ -8,6 +8,7 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouterState,
+  useLocation,
 } from '@tanstack/react-router';
 import {
   TanStackRouterDevtools,
@@ -15,9 +16,12 @@ import {
 } from '@tanstack/react-router-devtools';
 import '../index.css';
 
-export interface RouterAppContext {}
+export const links = [
+  { label: 'Home', to: '/' },
+  { label: 'Dashboard', to: '/dashboard' },
+];
 
-export const Route = createRootRouteWithContext<RouterAppContext>()({
+export const Route = createRootRouteWithContext()({
   component: RootComponent,
   head: () => ({
     meta: [
@@ -43,6 +47,9 @@ function RootComponent() {
     select: s => s.isLoading,
   });
 
+  const location = useLocation();
+  const isDashboardRoute = location.pathname.startsWith('/dashboard');
+
   return (
     <>
       <HeadContent />
@@ -52,8 +59,10 @@ function RootComponent() {
         disableTransitionOnChange
         storageKey='vite-ui-theme'
       >
-        <div className='grid grid-rows-[auto_1fr] h-svh'>
-          <Header />
+        <div
+          className={`${isDashboardRoute ? 'h-svh w-full flex justify-center' : 'grid grid-rows-[auto_1fr] h-svh'}`}
+        >
+          {!isDashboardRoute && <Header links={links} />}
           {isFetching ? <Loader /> : <Outlet />}
         </div>
         <Toaster richColors />
