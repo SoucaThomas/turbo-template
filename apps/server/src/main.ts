@@ -2,15 +2,18 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { toNodeHandler } from 'better-auth/node';
 import { AuthService } from '@mguay/nestjs-better-auth';
-import { Express, urlencoded } from 'express';
-import { json } from 'express';
 
 async function bootstrap() {
   // Disable NestJS's built-in body parser so we can control ordering
   const app = await NestFactory.create(AppModule, { bodyParser: false });
 
+  app.enableCors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  });
+
   // Access Express instance
-  const expressApp = app.getHttpAdapter().getInstance() as Express;
+  const expressApp = app.getHttpAdapter().getInstance();
 
   // Access BetterAuth instance from AuthService
   const authService = app.get<AuthService>(AuthService);
@@ -22,9 +25,9 @@ async function bootstrap() {
   );
 
   // Re-enable Nest's JSON body parser AFTER mounting BetterAuth
-  expressApp.use(json());
-  expressApp.use(urlencoded({ extended: true }));
+  expressApp.use(require('express').json());
+
   app.setGlobalPrefix('api');
-  await app.listen(3000);
+  await app.listen(process.env.PORT ?? 9095);
 }
 bootstrap();

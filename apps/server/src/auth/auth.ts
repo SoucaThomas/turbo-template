@@ -1,13 +1,11 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 
-export const createAuth = (database: NodePgDatabase) =>
-  betterAuth({
-    database: drizzleAdapter(database, {
+export const auth = betterAuth({
+  database: drizzleAdapter(
+    {},
+    {
       provider: 'pg',
-    }),
-    emailAndPassword: {
-      enabled: true,
     },
-  });
+  ),
+});
