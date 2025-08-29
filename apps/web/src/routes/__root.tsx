@@ -14,6 +14,8 @@ import {
   TanStackRouterDevtools,
   TanStackRouterDevtoolsPanel,
 } from '@tanstack/react-router-devtools';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '@/lib/query-client';
 import '../index.css';
 
 export const links = [
@@ -51,7 +53,7 @@ function RootComponent() {
   const isDashboardRoute = location.pathname.startsWith('/dashboard');
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <HeadContent />
       <ThemeProvider
         attribute='class'
@@ -79,6 +81,6 @@ function RootComponent() {
           },
         ]}
       />
-    </>
+    </QueryClientProvider>
   );
 }

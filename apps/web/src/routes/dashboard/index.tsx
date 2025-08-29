@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { BarChart3, Users, FileText, TrendingUp } from 'lucide-react';
+import { showToast } from '@/lib/toast';
 
 export const Route = createFileRoute('/dashboard/')({
   loader: async () => {
@@ -26,10 +27,13 @@ function RouteComponent() {
 
   useEffect(() => {
     if (!session) {
+      showToast.info('Please sign in to access the dashboard');
       void navigate({
         to: '/login',
         search: { form: 'signin' },
       });
+    } else {
+      showToast.success(`Welcome back, ${session.user.name}!`);
     }
   }, [session, navigate]);
 
