@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UploadTestRouteImport } from './routes/uploadTest'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
@@ -16,6 +17,11 @@ import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as DashboardBillingRouteImport } from './routes/dashboard/billing'
 import { Route as DashboardAccountRouteImport } from './routes/dashboard/account'
 
+const UploadTestRoute = UploadTestRouteImport.update({
+  id: '/uploadTest',
+  path: '/uploadTest',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
@@ -50,6 +56,7 @@ const DashboardAccountRoute = DashboardAccountRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/pricing': typeof PricingRoute
+  '/uploadTest': typeof UploadTestRoute
   '/dashboard/account': typeof DashboardAccountRoute
   '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard': typeof DashboardIndexRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/pricing': typeof PricingRoute
+  '/uploadTest': typeof UploadTestRoute
   '/dashboard/account': typeof DashboardAccountRoute
   '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard': typeof DashboardIndexRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/pricing': typeof PricingRoute
+  '/uploadTest': typeof UploadTestRoute
   '/dashboard/account': typeof DashboardAccountRoute
   '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard/': typeof DashboardIndexRoute
@@ -77,6 +86,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/pricing'
+    | '/uploadTest'
     | '/dashboard/account'
     | '/dashboard/billing'
     | '/dashboard'
@@ -85,6 +95,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/pricing'
+    | '/uploadTest'
     | '/dashboard/account'
     | '/dashboard/billing'
     | '/dashboard'
@@ -93,6 +104,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/pricing'
+    | '/uploadTest'
     | '/dashboard/account'
     | '/dashboard/billing'
     | '/dashboard/'
@@ -102,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PricingRoute: typeof PricingRoute
+  UploadTestRoute: typeof UploadTestRoute
   DashboardAccountRoute: typeof DashboardAccountRoute
   DashboardBillingRoute: typeof DashboardBillingRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
@@ -110,6 +123,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/uploadTest': {
+      id: '/uploadTest'
+      path: '/uploadTest'
+      fullPath: '/uploadTest'
+      preLoaderRoute: typeof UploadTestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
@@ -158,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PricingRoute: PricingRoute,
+  UploadTestRoute: UploadTestRoute,
   DashboardAccountRoute: DashboardAccountRoute,
   DashboardBillingRoute: DashboardBillingRoute,
   DashboardIndexRoute: DashboardIndexRoute,

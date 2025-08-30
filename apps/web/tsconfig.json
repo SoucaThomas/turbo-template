@@ -3,17 +3,18 @@
     "strict": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "target": "ESNext",
+    "target": "ES2020",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "verbatimModuleSyntax": true,
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
     "types": ["vite/client"],
     "rootDirs": ["."],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules", "dist", "**/*.gen.ts", "routeTree.gen.ts"]
 }
