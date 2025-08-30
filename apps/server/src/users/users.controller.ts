@@ -1,6 +1,6 @@
 import { Controller, Get, Request } from '@nestjs/common';
 import { AuthService } from '@mguay/nestjs-better-auth';
-import { StripePlans } from '../config/configuration';
+import { StripePlans } from '@turbo-template/stripe-plans';
 
 @Controller('users')
 export class UsersController {

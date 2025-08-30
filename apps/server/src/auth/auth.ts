@@ -5,7 +5,8 @@ import { ConfigService } from '@nestjs/config';
 import { EmailService } from '../email/email.service';
 import { stripe } from '@better-auth/stripe';
 import Stripe from 'stripe';
-import { AppConfig, StripePlans } from '../config/configuration';
+import { AppConfig } from '../config/configuration';
+import { StripePlans } from '@turbo-template/stripe-plans';
 
 export const createAuth = (
   database: PrismaClient,

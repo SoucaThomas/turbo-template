@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { authClient } from '@/lib/auth-client';
 import { showToast } from '@/lib/toast';
+import {
+  FrontendPlans,
+  isUpgrade,
+  getPriceDifference,
+  PLAN_IDS,
+} from '@turbo-template/stripe-plans';
 
-// Define available plans for upgrade/downgrade logic
-export const AVAILABLE_PLANS = [
-  { id: 'basic', name: 'Basic Plan', price: 5 },
-  { id: 'pro', name: 'Pro Plan', price: 50 },
-];
+// Use shared plans from the package
+export const AVAILABLE_PLANS = FrontendPlans;
 
 export function useSubscriptionActions() {
   const [upgradeLoading, setUpgradeLoading] = useState(false);
@@ -16,7 +19,7 @@ export function useSubscriptionActions() {
     setUpgradeLoading(true);
     try {
       const { error } = await authClient.subscription.upgrade({
-        plan: 'pro',
+        plan: PLAN_IDS.PRO,
         successUrl: '/dashboard/billing',
         cancelUrl: '/dashboard/billing',
       });
@@ -54,7 +57,7 @@ export function useSubscriptionActions() {
     setDowngradeLoading(true);
     try {
       const { error } = await authClient.subscription.upgrade({
-        plan: 'basic',
+        plan: PLAN_IDS.BASIC,
         successUrl: '/dashboard/billing',
         cancelUrl: '/dashboard/billing',
       });
@@ -95,20 +98,20 @@ export function useSubscriptionActions() {
     const otherPlans = AVAILABLE_PLANS.filter(p => p.id !== currentPlanId);
 
     return otherPlans.map(plan => {
-      const isUpgrade = plan.price > currentPlan.price;
-      const priceDiff = Math.abs(plan.price - currentPlan.price);
+      const upgrade = isUpgrade(currentPlanId, plan.id);
+      const priceDiff = getPriceDifference(currentPlanId, plan.id);
 
       return {
         ...plan,
-        isUpgrade,
-        priceDiff,
-        actionText: isUpgrade ? 'Upgrade' : 'Downgrade',
-        description: isUpgrade
+        isUpgrade: upgrade,
+        priceDiff: Math.abs(priceDiff),
+        actionText: upgrade ? 'Upgrade' : 'Downgrade',
+        description: upgrade
           ? 'Get additional features and priority support'
           : 'Switch to basic features',
-        priceChange: isUpgrade
+        priceChange: upgrade
           ? `+$${priceDiff}/month`
-          : `-$${priceDiff}/month`,
+          : `-$${Math.abs(priceDiff)}/month`,
       };
     });
   };

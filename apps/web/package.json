@@ -52,6 +52,7 @@
     "@tanstack/react-form": "^1.19.3",
     "@tanstack/react-query": "^5.85.5",
     "@tanstack/react-router": "^1.131.28",
+    "@turbo-template/stripe-plans": "workspace:*",
     "better-auth": "^1.3.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
