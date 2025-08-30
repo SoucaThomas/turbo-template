@@ -6,6 +6,8 @@ import { ConfigService } from '@nestjs/config';
 import * as express from 'express';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { LoggingInterceptor } from './interceptors';
+
 async function bootstrap() {
   // Create Express instance first
   const expressApp = express();
@@ -35,6 +37,9 @@ async function bootstrap() {
   expressApp.use(express.json());
 
   app.setGlobalPrefix('api');
+
+  // Apply global logging interceptor
+  app.useGlobalInterceptors(new LoggingInterceptor());
 
   const config = new DocumentBuilder()
     .setTitle('Basil API')
