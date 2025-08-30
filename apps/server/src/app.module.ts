@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module';
 import { EmailModule } from './email/email.module';
 import { createAuth } from './auth/auth';
 import configuration, { AppConfig } from './config/configuration';
+import { UploadModule } from './upload/upload.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import configuration, { AppConfig } from './config/configuration';
     }),
     UsersModule,
     EmailModule,
+    UploadModule,
   ],
 })
 export class AppModule {}
