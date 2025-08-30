@@ -77,6 +77,7 @@ model Subscription {
   stripeCustomerId       String?   @map("stripe_customer_id")
   stripeSubscriptionId   String?   @map("stripe_subscription_id")
   status                 String?   @default("incomplete")
+  seats                  Int       @default(1)
   periodStart            DateTime? @map("period_start") @db.Timestamp(6)
   periodEnd              DateTime? @map("period_end") @db.Timestamp(6)
   cancelAtPeriodEnd      Boolean?  @map("cancel_at_period_end")

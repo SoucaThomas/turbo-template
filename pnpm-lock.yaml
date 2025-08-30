@@ -15,11 +15,11 @@ importers:
   apps/server:
     dependencies:
       '@better-auth/stripe':
-        specifier: ^1.3.7
-        version: 1.3.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(zod@4.1.5)
+        specifier: 1.3.8-beta.6
+        version: 1.3.8-beta.6(better-auth@1.3.8-beta.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(stripe@18.5.0(@types/node@24.1.0))
       '@mguay/nestjs-better-auth':
         specifier: 1.0.2
-        version: 1.0.2(@nestjs/common@11.1.6(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.6)(better-auth@1.3.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(zod@4.1.5))(express@5.1.0)(typescript@5.8.2)
+        version: 1.0.2(@nestjs/common@11.1.6(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.6)(better-auth@1.3.8-beta.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(express@5.1.0)(typescript@5.8.2)
       '@nestjs/common':
         specifier: ^11.1.5
         version: 11.1.6(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -39,8 +39,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/stripe-plans
       better-auth:
-        specifier: ^1.3.4
-        version: 1.3.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(zod@4.1.5)
+        specifier: 1.3.8-beta.6
+        version: 1.3.8-beta.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -645,6 +645,12 @@ packages:
     resolution: {integrity: sha512-hmcWJu9RB1IOf+Mb8izQyLOAkRFKes8O0j/VoIFwLR0l2zWTknXKzkLUjadFPeKXHtV3i2n2++prjuVev6F6zw==}
     peerDependencies:
       zod: ^3.25.0 || ^4.0.0
+
+  '@better-auth/stripe@1.3.8-beta.6':
+    resolution: {integrity: sha512-L4nLbmTUxI8Ns0KMALwW5o8W2rAi1QYGwMc6Ft5AKo2H1V5qWlJMrAtYTQy3jQj531Aeps4nQLgfVSV6ixEkDg==}
+    peerDependencies:
+      better-auth: 1.3.8-beta.6
+      stripe: ^18
 
   '@better-auth/utils@0.2.6':
     resolution: {integrity: sha512-3y/vaL5Ox33dBwgJ6ub3OPkVqr6B5xL2kgxNHG8eHZuryLyG/4JSPGqjbdRSgjuy9kALUZYDFl+ORIAxlWMSuA==}
@@ -3037,6 +3043,20 @@ packages:
         optional: true
       react-dom:
         optional: true
+
+  better-auth@1.3.8-beta.6:
+    resolution: {integrity: sha512-zXLo8h9KAME1uUcnwdlq2WpMtJTGyhDoBFIZJOdMWhnt1D3yFwdlgSoRAQQ9TFcfQFfRECxFCOAs3ecXjekaNw==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
+  better-call@1.0.15:
+    resolution: {integrity: sha512-u4ZNRB1yBx5j3CltTEbY2ZoFPVcgsuvciAqTEmPvnZpZ483vlZf4LGJ5aVau1yMlrvlyHxOCica3OqXBLhmsUw==}
 
   better-call@1.0.16:
     resolution: {integrity: sha512-42dgJ1rOtc0anOoxjXPOWuel/Z/4aeO7EJ2SiXNwvlkySSgjXhNjAjTMWa8DL1nt6EXS3jl3VKC3mPsU/lUgVA==}
@@ -6258,6 +6278,12 @@ snapshots:
       - react
       - react-dom
 
+  '@better-auth/stripe@1.3.8-beta.6(better-auth@1.3.8-beta.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(stripe@18.5.0(@types/node@24.1.0))':
+    dependencies:
+      better-auth: 1.3.8-beta.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      stripe: 18.5.0(@types/node@24.1.0)
+      zod: 4.1.5
+
   '@better-auth/utils@0.2.6':
     dependencies:
       uncrypto: 0.1.3
@@ -6876,11 +6902,11 @@ snapshots:
 
   '@lukeed/csprng@1.1.0': {}
 
-  '@mguay/nestjs-better-auth@1.0.2(@nestjs/common@11.1.6(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.6)(better-auth@1.3.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(zod@4.1.5))(express@5.1.0)(typescript@5.8.2)':
+  '@mguay/nestjs-better-auth@1.0.2(@nestjs/common@11.1.6(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.6)(better-auth@1.3.8-beta.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(express@5.1.0)(typescript@5.8.2)':
     dependencies:
       '@nestjs/common': 11.1.6(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.1.6(@nestjs/common@11.1.6(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.6)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      better-auth: 1.3.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(zod@4.1.5)
+      better-auth: 1.3.8-beta.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       express: 5.1.0
       typescript: 5.8.2
 
@@ -8972,6 +8998,31 @@ snapshots:
     optionalDependencies:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
+
+  better-auth@1.3.8-beta.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+    dependencies:
+      '@better-auth/utils': 0.2.6
+      '@better-fetch/fetch': 1.1.18
+      '@noble/ciphers': 0.6.0
+      '@noble/hashes': 1.8.0
+      '@simplewebauthn/browser': 13.1.2
+      '@simplewebauthn/server': 13.1.2
+      better-call: 1.0.15
+      defu: 6.1.4
+      jose: 5.10.0
+      kysely: 0.28.5
+      nanostores: 0.11.4
+      zod: 4.1.5
+    optionalDependencies:
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
+
+  better-call@1.0.15:
+    dependencies:
+      '@better-fetch/fetch': 1.1.18
+      rou3: 0.5.1
+      set-cookie-parser: 2.7.1
+      uncrypto: 0.1.3
 
   better-call@1.0.16:
     dependencies:
