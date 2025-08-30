@@ -37,6 +37,7 @@
     "@nestjs/core": "^11.1.5",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^11.1.5",
+    "@nestjs/swagger": "^11.2.0",
     "@nestjs/throttler": "^6.4.0",
     "@prisma/client": "^6.15.0",
     "@turbo-template/stripe-plans": "workspace:*",
