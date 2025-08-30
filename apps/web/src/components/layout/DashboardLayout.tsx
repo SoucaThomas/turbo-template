@@ -1,6 +1,13 @@
 import type { ReactNode } from 'react';
 import { Link } from '@tanstack/react-router';
-import { Home, Settings, LogOut, Menu, LayoutDashboard } from 'lucide-react';
+import {
+  Home,
+  Settings,
+  LogOut,
+  Menu,
+  LayoutDashboard,
+  CreditCard,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { authClient } from '@/lib/auth-client';
 import {
@@ -27,10 +34,41 @@ interface DashboardLayoutProps {
 const sidebarItems = [
   { icon: LayoutDashboard, label: 'Overview', href: '/dashboard' },
   { icon: Settings, label: 'Account Settings', href: '/dashboard/account' },
+  { icon: CreditCard, label: 'Billing', href: '/dashboard/billing' },
 ];
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
-  const { data: session } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
+
+  // Show loading state while session is being fetched
+  if (isPending) {
+    return (
+      <div className='flex h-full w-full items-center justify-center'>
+        <div className='text-center'>
+          <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4'></div>
+          <p className='text-muted-foreground'>Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state if no session (user not authenticated)
+  if (!session || !session.user) {
+    return (
+      <div className='flex h-full w-full items-center justify-center'>
+        <div className='text-center'>
+          <p className='text-muted-foreground mb-4'>
+            You need to be signed in to access this page.
+          </p>
+          <Button asChild>
+            <Link to='/login' search={{ form: 'signin' }}>
+              Sign In
+            </Link>
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <SidebarProvider>

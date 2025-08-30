@@ -16,6 +16,7 @@ import {
   ProfileInformation,
   Security,
   DataPrivacy,
+  Billing,
 } from './components/account';
 
 export default function AccountSettingsView() {
@@ -46,6 +47,9 @@ export default function AccountSettingsView() {
 
         {/* Security Settings */}
         <Security />
+
+        {/* Billing Settings */}
+        <Billing />
 
         {/* Notification Preferences */}
         <Card>

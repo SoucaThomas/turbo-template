@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Link } from '@tanstack/react-router';
 
 export default function Hero() {
   return (
@@ -20,8 +21,17 @@ export default function Hero() {
             <Button
               size='lg'
               className='text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1'
+              asChild
             >
-              Get Started
+              <Link to='/dashboard'>Get Started</Link>
+            </Button>
+            <Button
+              size='lg'
+              variant='outline'
+              className='text-lg px-8 py-6 border-2 hover:bg-muted hover:text-foreground transition-all duration-300 hover:-translate-y-1'
+              asChild
+            >
+              <Link to='/pricing'>View Pricing</Link>
             </Button>
             <Button
               size='lg'

@@ -6,7 +6,7 @@ import { ErrorDisplay } from './ErrorDisplay';
 import { NoSessionsDisplay } from './NoSessionsDisplay';
 import { CurrentSessionCard } from './CurrentSessionCard';
 import { OtherSessionsList } from './OtherSessionsList';
-import { DangerZone } from './DangerZone';
+import { DangerZone } from '../billing/DangerZone';
 import { RevokeOthersButton } from './RevokeOthersButton';
 
 export default function SessionManagement() {

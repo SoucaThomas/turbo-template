@@ -9,11 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
+import { Route as DashboardBillingRouteImport } from './routes/dashboard/billing'
 import { Route as DashboardAccountRouteImport } from './routes/dashboard/account'
 
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -29,6 +36,11 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/dashboard/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardBillingRoute = DashboardBillingRouteImport.update({
+  id: '/dashboard/billing',
+  path: '/dashboard/billing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardAccountRoute = DashboardAccountRouteImport.update({
   id: '/dashboard/account',
   path: '/dashboard/account',
@@ -37,40 +49,74 @@ const DashboardAccountRoute = DashboardAccountRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/pricing': typeof PricingRoute
   '/dashboard/account': typeof DashboardAccountRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard': typeof DashboardIndexRoute
   '/login': typeof LoginIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/pricing': typeof PricingRoute
   '/dashboard/account': typeof DashboardAccountRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard': typeof DashboardIndexRoute
   '/login': typeof LoginIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/pricing': typeof PricingRoute
   '/dashboard/account': typeof DashboardAccountRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/login/': typeof LoginIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard/account' | '/dashboard' | '/login'
+  fullPaths:
+    | '/'
+    | '/pricing'
+    | '/dashboard/account'
+    | '/dashboard/billing'
+    | '/dashboard'
+    | '/login'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard/account' | '/dashboard' | '/login'
-  id: '__root__' | '/' | '/dashboard/account' | '/dashboard/' | '/login/'
+  to:
+    | '/'
+    | '/pricing'
+    | '/dashboard/account'
+    | '/dashboard/billing'
+    | '/dashboard'
+    | '/login'
+  id:
+    | '__root__'
+    | '/'
+    | '/pricing'
+    | '/dashboard/account'
+    | '/dashboard/billing'
+    | '/dashboard/'
+    | '/login/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PricingRoute: typeof PricingRoute
   DashboardAccountRoute: typeof DashboardAccountRoute
+  DashboardBillingRoute: typeof DashboardBillingRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
   LoginIndexRoute: typeof LoginIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -92,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/billing': {
+      id: '/dashboard/billing'
+      path: '/dashboard/billing'
+      fullPath: '/dashboard/billing'
+      preLoaderRoute: typeof DashboardBillingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard/account': {
       id: '/dashboard/account'
       path: '/dashboard/account'
@@ -104,7 +157,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PricingRoute: PricingRoute,
   DashboardAccountRoute: DashboardAccountRoute,
+  DashboardBillingRoute: DashboardBillingRoute,
   DashboardIndexRoute: DashboardIndexRoute,
   LoginIndexRoute: LoginIndexRoute,
 }

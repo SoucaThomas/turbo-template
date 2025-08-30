@@ -20,6 +20,7 @@ import '../index.css';
 
 export const links = [
   { label: 'Home', to: '/' },
+  { label: 'Pricing', to: '/pricing' },
   { label: 'Dashboard', to: '/dashboard' },
 ];
 

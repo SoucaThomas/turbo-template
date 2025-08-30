@@ -1,4 +1,12 @@
-import { Code2, Database, Lock, Shield, Smartphone, Zap } from 'lucide-react';
+import {
+  Code2,
+  Database,
+  Lock,
+  Shield,
+  Smartphone,
+  Zap,
+  CreditCard,
+} from 'lucide-react';
 
 import {
   Card,
@@ -44,6 +52,12 @@ const features = [
     title: 'Responsive Design',
     description:
       'Mobile-first design with modern UI components and dark mode support.',
+  },
+  {
+    icon: CreditCard,
+    title: 'Stripe Integration',
+    description:
+      'Built-in Stripe payment processing with subscription management and billing.',
   },
 ];
 

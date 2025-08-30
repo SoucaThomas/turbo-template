@@ -1,10 +1,21 @@
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import { PrismaClient } from '@prisma/client';
+import { ConfigService } from '@nestjs/config';
 import { EmailService } from '../email/email.service';
+import { stripe } from '@better-auth/stripe';
+import Stripe from 'stripe';
+import { AppConfig, StripePlans } from '../config/configuration';
 
-export const createAuth = (database: PrismaClient) =>
-  betterAuth({
+export const createAuth = (
+  database: PrismaClient,
+  configService: ConfigService<AppConfig>
+) => {
+  const stripeClient = new Stripe(configService.get('STRIPE_SECRET_KEY'), {
+    apiVersion: '2025-08-27.basil',
+  });
+
+  return betterAuth({
     database: prismaAdapter(database, {
       provider: 'postgresql',
     }),
@@ -43,14 +54,33 @@ export const createAuth = (database: PrismaClient) =>
       sendPasswordChangedEmail: true,
       sendPasswordResetEmail: true,
     },
+    plugins: [
+      stripe({
+        stripeClient,
+        stripeWebhookSecret: configService.get('STRIPE_WEBHOOK_SECRET'),
+        createCustomerOnSignUp: true,
+        subscription: {
+          enabled: true,
+          plans: () => {
+            const plans = StripePlans;
+            return Promise.resolve(
+              plans.map(plan => ({
+                name: plan.id, // Use plan.id as the name for Better Auth
+                priceId: plan.priceId,
+              }))
+            );
+          },
+        },
+      }),
+    ],
     oauth: {
       enabled: true,
       providers: [
         {
           id: 'google',
           type: 'oidc',
-          clientId: process.env.GOOGLE_CLIENT_ID || '',
-          clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+          clientId: configService.get<string>('GOOGLE_CLIENT_ID') || '',
+          clientSecret: configService.get<string>('GOOGLE_CLIENT_SECRET') || '',
           config: {
             issuer: 'https://accounts.google.com',
             authorizationEndpoint:
@@ -62,8 +92,8 @@ export const createAuth = (database: PrismaClient) =>
         {
           id: 'github',
           type: 'oauth',
-          clientId: process.env.GITHUB_CLIENT_ID || '',
-          clientSecret: process.env.GITHUB_CLIENT_SECRET || '',
+          clientId: configService.get<string>('GITHUB_CLIENT_ID') || '',
+          clientSecret: configService.get<string>('GITHUB_CLIENT_SECRET') || '',
           config: {
             authorizationEndpoint: 'https://github.com/login/oauth/authorize',
             tokenEndpoint: 'https://github.com/login/oauth/access_token',
@@ -78,6 +108,12 @@ export const createAuth = (database: PrismaClient) =>
       generateId: () => crypto.randomUUID(),
     },
 
-    trustedOrigins: ['http://localhost:3000'],
+    trustedOrigins: [
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'http://localhost:3002',
+      'http://localhost:3003',
+    ],
     basePath: '/api/auth',
   });
+};

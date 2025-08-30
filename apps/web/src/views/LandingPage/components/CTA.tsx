@@ -1,6 +1,7 @@
-import { ArrowRight, Github, Zap } from 'lucide-react';
+import { ArrowRight, Github, Zap, CreditCard } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { Link } from '@tanstack/react-router';
 
 export default function CTA() {
   return (
@@ -21,10 +22,24 @@ export default function CTA() {
               size='lg'
               variant='secondary'
               className='text-lg px-8 py-6 bg-background text-foreground hover:bg-muted shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1'
+              asChild
             >
-              <Zap className='mr-2 h-5 w-5' />
-              Get Started Now
-              <ArrowRight className='ml-2 h-5 w-5' />
+              <Link to='/dashboard'>
+                <Zap className='mr-2 h-5 w-5' />
+                Get Started Now
+                <ArrowRight className='ml-2 h-5 w-5' />
+              </Link>
+            </Button>
+            <Button
+              size='lg'
+              variant='outline'
+              className='text-lg px-8 py-6 border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all duration-300 hover:-translate-y-1'
+              asChild
+            >
+              <Link to='/pricing'>
+                <CreditCard className='mr-2 h-5 w-5' />
+                View Pricing
+              </Link>
             </Button>
             <Button
               size='lg'

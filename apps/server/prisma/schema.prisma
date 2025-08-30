@@ -1,3 +1,4 @@
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -18,6 +19,8 @@ model User {
   stripe_customer_id String?
   accounts           Account[]
   sessions           Session[]
+
+  stripeCustomerId String?
 
   @@map("user")
 }
@@ -66,15 +69,21 @@ model Verification {
   @@map("verification")
 }
 
-model subscription {
+// Better Auth Stripe Models
+model Subscription {
   id                     String    @id
   plan                   String
-  reference_id           String
-  stripe_customer_id     String?
-  stripe_subscription_id String?
+  referenceId            String    @map("reference_id")
+  stripeCustomerId       String?   @map("stripe_customer_id")
+  stripeSubscriptionId   String?   @map("stripe_subscription_id")
   status                 String?   @default("incomplete")
-  period_start           DateTime? @db.Timestamp(6)
-  period_end             DateTime? @db.Timestamp(6)
-  cancel_at_period_end   Boolean?
-  seats                  Int?
+  periodStart            DateTime? @map("period_start") @db.Timestamp(6)
+  periodEnd              DateTime? @map("period_end") @db.Timestamp(6)
+  cancelAtPeriodEnd      Boolean?  @map("cancel_at_period_end")
+  trialStart             DateTime? @map("trial_start") @db.Timestamp(6)
+  trialEnd               DateTime? @map("trial_end") @db.Timestamp(6)
+  createdAt              DateTime  @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt              DateTime  @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  @@map("subscription")
 }
