@@ -1,9 +1,7 @@
 import { Global, Module } from '@nestjs/common';
-import { drizzle } from 'drizzle-orm/node-postgres';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { Pool } from 'pg';
 import { DATABASE_CONNECTION } from './database-connection';
-import * as authSchema from '../auth/schema';
+import { PrismaClient } from '@prisma/client';
 
 @Global()
 @Module({
@@ -12,14 +10,14 @@ import * as authSchema from '../auth/schema';
     {
       provide: DATABASE_CONNECTION,
       useFactory: (configService: ConfigService) => {
-        const pool = new Pool({
-          connectionString: configService.getOrThrow('DATABASE_URL'),
-        });
-        return drizzle(pool, {
-          schema: {
-            ...authSchema,
+        const prisma = new PrismaClient({
+          datasources: {
+            db: {
+              url: configService.getOrThrow('DATABASE_URL'),
+            },
           },
         });
+        return prisma;
       },
       inject: [ConfigService],
     },

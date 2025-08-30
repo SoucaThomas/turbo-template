@@ -1,12 +1,12 @@
 import { betterAuth } from 'better-auth';
-import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { NodePgDatabase } from 'drizzle-orm/node-postgres';
+import { prismaAdapter } from 'better-auth/adapters/prisma';
+import { PrismaClient } from '@prisma/client';
 import { EmailService } from '../email/email.service';
 
-export const createAuth = (database: NodePgDatabase) =>
+export const createAuth = (database: PrismaClient) =>
   betterAuth({
-    database: drizzleAdapter(database, {
-      provider: 'pg',
+    database: prismaAdapter(database, {
+      provider: 'postgresql',
     }),
     user: {
       changeEmail: {
