@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Globe, Link } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -6,9 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Globe, Link } from 'lucide-react';
 import { implementedOAuthProviders } from './implemented-oauth';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function OAuth() {
   // TODO: Implement OAuth linking

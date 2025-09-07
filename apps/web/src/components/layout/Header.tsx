@@ -1,8 +1,8 @@
 import { Link, useNavigate } from '@tanstack/react-router';
 import { ModeToggle } from '@/components/mode-toggle';
-import UserMenu from '../user-menu';
 import { authClient } from '@/lib/auth-client';
 import { Button } from '../ui/button';
+import UserMenu from '../user-menu';
 
 interface HeaderProps {
   links: {

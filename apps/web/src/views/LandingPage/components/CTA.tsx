@@ -1,7 +1,6 @@
-import { ArrowRight, Github, Zap, CreditCard } from 'lucide-react';
-
-import { Button } from '@/components/ui/button';
 import { Link } from '@tanstack/react-router';
+import { ArrowRight, CreditCard, Github, Zap } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function CTA() {
   return (

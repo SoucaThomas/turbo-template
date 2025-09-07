@@ -1,3 +1,6 @@
+import { Link } from '@tanstack/react-router';
+import { ArrowRight, CreditCard } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -5,9 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { CreditCard, ArrowRight } from 'lucide-react';
-import { Link } from '@tanstack/react-router';
 
 export default function Billing() {
   return (

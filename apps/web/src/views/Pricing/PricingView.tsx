@@ -1,3 +1,6 @@
+import { Link } from '@tanstack/react-router';
+import { Check, Settings } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -6,12 +9,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Check, Settings } from 'lucide-react';
 import { authClient } from '@/lib/auth-client';
 import { showToast } from '@/lib/toast';
 import { useBilling } from '@/views/Dashboard/components/billing/useBilling';
-import { Link } from '@tanstack/react-router';
 
 // Define the plan structure based on the server configuration
 interface StripePlan {

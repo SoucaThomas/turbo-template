@@ -1,14 +1,14 @@
-import { Module } from '@nestjs/common';
 import { AuthModule } from '@mguay/nestjs-better-auth';
+import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { DATABASE_CONNECTION } from './database/database-connection';
-import { PrismaClient } from '@prisma/client';
-import { DatabaseModule } from './database/database.module';
-import { UsersModule } from './users/users.module';
-import { EmailModule } from './email/email.module';
+import type { PrismaClient } from '@prisma/client';
 import { createAuth } from './auth/auth';
-import configuration, { AppConfig } from './config/configuration';
+import configuration, { type AppConfig } from './config/configuration';
+import { DatabaseModule } from './database/database.module';
+import { DATABASE_CONNECTION } from './database/database-connection';
+import { EmailModule } from './email/email.module';
 import { UploadModule } from './upload/upload.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [

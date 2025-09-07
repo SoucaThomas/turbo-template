@@ -1,3 +1,5 @@
+import { Mail, Trash2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -5,8 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Mail, Trash2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { authClient } from '@/lib/auth-client';
 import { showToast } from '@/lib/toast';
 

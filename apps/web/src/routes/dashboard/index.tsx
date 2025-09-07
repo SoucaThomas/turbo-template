@@ -1,5 +1,5 @@
-import { authClient } from '@/lib/auth-client';
 import { createFileRoute } from '@tanstack/react-router';
+import { BarChart3, FileText, TrendingUp, Users } from 'lucide-react';
 import { useEffect } from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import {
@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { BarChart3, Users, FileText, TrendingUp } from 'lucide-react';
+import { authClient } from '@/lib/auth-client';
 import { showToast } from '@/lib/toast';
 
 export const Route = createFileRoute('/dashboard/')({

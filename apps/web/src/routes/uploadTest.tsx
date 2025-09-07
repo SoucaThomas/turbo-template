@@ -1,7 +1,7 @@
+import { createFileRoute } from '@tanstack/react-router';
+import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useUpload } from '@/hooks/use-upload';
-import { createFileRoute } from '@tanstack/react-router';
-import { useState, useRef } from 'react';
 
 export const Route = createFileRoute('/uploadTest')({
   component: RouteComponent,

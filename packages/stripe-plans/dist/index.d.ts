@@ -30,5 +30,5 @@ export declare const getPlanByPriceId: (priceId: string) => StripePlan | undefin
 export declare const isUpgrade: (fromPlanId: string, toPlanId: string) => boolean;
 export declare const getPriceDifference: (fromPlanId: string, toPlanId: string) => number;
 export declare const getPlanFeatures: (planId: string) => string[];
-export type PlanInterval = StripePlan["interval"];
+export type PlanInterval = StripePlan['interval'];
 //# sourceMappingURL=index.d.ts.map

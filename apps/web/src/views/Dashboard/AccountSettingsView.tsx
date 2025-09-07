@@ -1,3 +1,4 @@
+import { Bell } from 'lucide-react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import {
   Card,
@@ -8,15 +9,14 @@ import {
 } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Switch } from '@/components/ui/switch';
-import { Bell } from 'lucide-react';
 import { Route } from '@/routes/dashboard/account';
 import {
+  Billing,
+  DataPrivacy,
   Header,
   OAuth,
   ProfileInformation,
   Security,
-  DataPrivacy,
-  Billing,
 } from './components/account';
 
 export default function AccountSettingsView() {

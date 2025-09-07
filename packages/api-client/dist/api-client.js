@@ -1,18 +1,18 @@
-import axios from "axios";
+import axios from 'axios';
 // Auto-generated API client based on OpenAPI spec
 export class ApiClient {
-    constructor(baseURL = "http://localhost:9095", config) {
+    constructor(baseURL = 'http://localhost:9095', config) {
         this.client = axios.create({
             baseURL,
             ...config,
         });
         // Add request interceptor for authentication
-        this.client.interceptors.request.use((config) => {
+        this.client.interceptors.request.use(config => {
             // You can add auth headers here if needed
             return config;
         });
         // Add response interceptor for error handling
-        this.client.interceptors.response.use((response) => response, (error) => {
+        this.client.interceptors.response.use(response => response, error => {
             // Handle common errors here
             return Promise.reject(error);
         });
@@ -20,11 +20,11 @@ export class ApiClient {
     // Auto-generated upload method based on OpenAPI spec
     async upload(file, config) {
         const formData = new FormData();
-        formData.append("file", file);
-        return this.post("/api/upload", formData, {
+        formData.append('file', file);
+        return this.post('/api/upload', formData, {
             ...config,
             headers: {
-                "Content-Type": "multipart/form-data",
+                'Content-Type': 'multipart/form-data',
                 ...config?.headers,
             },
         });

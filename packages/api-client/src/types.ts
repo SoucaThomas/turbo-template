@@ -3,18 +3,16 @@
  * Do not make direct changes to the file.
  */
 
-
 export interface paths {
-  "/api/upload": {
-    post: operations["UploadController_uploadFile"];
+  '/api/upload': {
+    post: operations['UploadController_uploadFile'];
   };
 }
 
 export type webhooks = Record<string, never>;
 
 export interface components {
-  schemas: {
-  };
+  schemas: {};
   responses: never;
   parameters: never;
   requestBodies: never;
@@ -27,11 +25,10 @@ export type $defs = Record<string, never>;
 export type external = Record<string, never>;
 
 export interface operations {
-
   UploadController_uploadFile: {
     requestBody: {
       content: {
-        "multipart/form-data": {
+        'multipart/form-data': {
           /**
            * Format: binary
            * @description File to upload (max 25MB, images only)
@@ -44,7 +41,7 @@ export interface operations {
       /** @description File uploaded successfully */
       201: {
         content: {
-          "application/json": {
+          'application/json': {
             /** @example File uploaded successfully */
             message: string;
             /** @example example.jpg */

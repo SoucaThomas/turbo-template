@@ -1,3 +1,4 @@
+import { CheckCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import {
   Card,
@@ -6,9 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { CheckCircle } from 'lucide-react';
+import type { Session } from '@/lib/auth-client';
 import { SessionCard } from './SessionCard';
-import { type Session } from '@/lib/auth-client';
 
 interface CurrentSessionCardProps {
   currentSession: Session;

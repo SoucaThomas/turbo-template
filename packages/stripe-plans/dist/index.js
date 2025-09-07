@@ -6,29 +6,29 @@ exports.getPlanFeatures = exports.getPriceDifference = exports.isUpgrade = expor
 // Production Stripe Plans
 exports.StripePlans = [
     {
-        id: "basic",
-        name: "Basic Plan",
+        id: 'basic',
+        name: 'Basic Plan',
         price: 5,
-        priceId: "price_1S1mayRwkivOozlppgaJXFix", // This exists in Stripe ($5/month)
-        interval: "month",
-        description: "Basic plan for individuals",
-        features: ["Feature 1", "Feature 2", "Feature 3"],
+        priceId: 'price_1S1mayRwkivOozlppgaJXFix', // This exists in Stripe ($5/month)
+        interval: 'month',
+        description: 'Basic plan for individuals',
+        features: ['Feature 1', 'Feature 2', 'Feature 3'],
         createdAt: new Date(),
         updatedAt: new Date(),
     },
     {
-        id: "pro",
-        name: "Pro Plan",
+        id: 'pro',
+        name: 'Pro Plan',
         price: 50,
-        priceId: "price_1S1mblRwkivOozlpOmGCdNa3", // This exists in Stripe ($50/month)
-        interval: "month",
-        description: "Pro plan for power users",
-        features: ["Feature 1", "Feature 2", "Feature 3", "Priority support"],
+        priceId: 'price_1S1mblRwkivOozlpOmGCdNa3', // This exists in Stripe ($50/month)
+        interval: 'month',
+        description: 'Pro plan for power users',
+        features: ['Feature 1', 'Feature 2', 'Feature 3', 'Priority support'],
         createdAt: new Date(),
         updatedAt: new Date(),
     },
 ];
-exports.FrontendPlans = exports.StripePlans.map((plan) => ({
+exports.FrontendPlans = exports.StripePlans.map(plan => ({
     id: plan.id,
     name: plan.name,
     price: plan.price,
@@ -38,20 +38,20 @@ exports.FrontendPlans = exports.StripePlans.map((plan) => ({
 }));
 // Plan IDs as constants for better type safety
 exports.PLAN_IDS = {
-    BASIC: "basic",
-    PRO: "pro",
+    BASIC: 'basic',
+    PRO: 'pro',
 };
 // Helper functions
 const getPlanById = (id) => {
-    return exports.StripePlans.find((plan) => plan.id === id);
+    return exports.StripePlans.find(plan => plan.id === id);
 };
 exports.getPlanById = getPlanById;
 const getFrontendPlanById = (id) => {
-    return exports.FrontendPlans.find((plan) => plan.id === id);
+    return exports.FrontendPlans.find(plan => plan.id === id);
 };
 exports.getFrontendPlanById = getFrontendPlanById;
 const getPlanByPriceId = (priceId) => {
-    return exports.StripePlans.find((plan) => plan.priceId === priceId);
+    return exports.StripePlans.find(plan => plan.priceId === priceId);
 };
 exports.getPlanByPriceId = getPlanByPriceId;
 // Utility functions for plan comparison

@@ -1,5 +1,5 @@
-import { Card, CardContent } from '@/components/ui/card';
 import { AlertTriangle } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface ErrorDisplayProps {
   error: string;

@@ -1,10 +1,10 @@
+import { AlertTriangle, RefreshCw } from 'lucide-react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { AlertTriangle, RefreshCw } from 'lucide-react';
-import { useBilling } from './components/billing/useBilling';
 import CurrentSubscription from './components/billing/CurrentSubscription';
+import { useBilling } from './components/billing/useBilling';
 
 export default function BillingView() {
   const { activeSubscription, loading, error, refreshAll } = useBilling();

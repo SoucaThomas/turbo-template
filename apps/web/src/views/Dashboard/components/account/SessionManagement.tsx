@@ -1,12 +1,12 @@
 import { useSessions } from '@/hooks/use-sessions';
-import { showToast } from '@/lib/toast';
 import { useSession } from '@/lib/auth-client';
-import { LoadingSkeleton } from './LoadingSkeleton';
-import { ErrorDisplay } from './ErrorDisplay';
-import { NoSessionsDisplay } from './NoSessionsDisplay';
-import { CurrentSessionCard } from './CurrentSessionCard';
-import { OtherSessionsList } from './OtherSessionsList';
+import { showToast } from '@/lib/toast';
 import { DangerZone } from '../billing/DangerZone';
+import { CurrentSessionCard } from './CurrentSessionCard';
+import { ErrorDisplay } from './ErrorDisplay';
+import { LoadingSkeleton } from './LoadingSkeleton';
+import { NoSessionsDisplay } from './NoSessionsDisplay';
+import { OtherSessionsList } from './OtherSessionsList';
 import { RevokeOthersButton } from './RevokeOthersButton';
 
 export default function SessionManagement() {

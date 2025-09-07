@@ -1,12 +1,12 @@
+import { stripe } from '@better-auth/stripe';
+import type { ConfigService } from '@nestjs/config';
+import type { PrismaClient } from '@prisma/client';
+import { StripePlans } from '@turbo-template/stripe-plans';
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
-import { PrismaClient } from '@prisma/client';
-import { ConfigService } from '@nestjs/config';
-import { EmailService } from '../email/email.service';
-import { stripe } from '@better-auth/stripe';
 import Stripe from 'stripe';
-import { AppConfig } from '../config/configuration';
-import { StripePlans } from '@turbo-template/stripe-plans';
+import type { AppConfig } from '../config/configuration';
+import { EmailService } from '../email/email.service';
 
 export const createAuth = (
   database: PrismaClient,

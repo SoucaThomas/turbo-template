@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -11,16 +11,16 @@
 
 body {
   @apply m-0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 @theme inline {
@@ -115,16 +115,21 @@ code {
   --radius: 0.625rem;
   --shadow-2xs: 2px 2px 4px 0px hsl(255 86% 66% / 0.1);
   --shadow-xs: 2px 2px 4px 0px hsl(255 86% 66% / 0.1);
-  --shadow-sm: 2px 2px 4px 0px hsl(255 86% 66% / 0.2),
-    2px 1px 2px -1px hsl(255 86% 66% / 0.2);
-  --shadow: 2px 2px 4px 0px hsl(255 86% 66% / 0.2),
-    2px 1px 2px -1px hsl(255 86% 66% / 0.2);
-  --shadow-md: 2px 2px 4px 0px hsl(255 86% 66% / 0.2),
-    2px 2px 4px -1px hsl(255 86% 66% / 0.2);
-  --shadow-lg: 2px 2px 4px 0px hsl(255 86% 66% / 0.2),
-    2px 4px 6px -1px hsl(255 86% 66% / 0.2);
-  --shadow-xl: 2px 2px 4px 0px hsl(255 86% 66% / 0.2),
-    2px 8px 10px -1px hsl(255 86% 66% / 0.2);
+  --shadow-sm:
+    2px 2px 4px 0px hsl(255 86% 66% / 0.2), 2px 1px 2px -1px
+    hsl(255 86% 66% / 0.2);
+  --shadow:
+    2px 2px 4px 0px hsl(255 86% 66% / 0.2), 2px 1px 2px -1px
+    hsl(255 86% 66% / 0.2);
+  --shadow-md:
+    2px 2px 4px 0px hsl(255 86% 66% / 0.2), 2px 2px 4px -1px
+    hsl(255 86% 66% / 0.2);
+  --shadow-lg:
+    2px 2px 4px 0px hsl(255 86% 66% / 0.2), 2px 4px 6px -1px
+    hsl(255 86% 66% / 0.2);
+  --shadow-xl:
+    2px 2px 4px 0px hsl(255 86% 66% / 0.2), 2px 8px 10px -1px
+    hsl(255 86% 66% / 0.2);
   --shadow-2xl: 2px 2px 4px 0px hsl(255 86% 66% / 0.5);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
@@ -169,16 +174,21 @@ code {
   --radius: 0.625rem;
   --shadow-2xs: 2px 2px 4px 0px hsl(255 86% 66% / 0.1);
   --shadow-xs: 2px 2px 4px 0px hsl(255 86% 66% / 0.1);
-  --shadow-sm: 2px 2px 4px 0px hsl(255 86% 66% / 0.2),
-    2px 1px 2px -1px hsl(255 86% 66% / 0.2);
-  --shadow: 2px 2px 4px 0px hsl(255 86% 66% / 0.2),
-    2px 1px 2px -1px hsl(255 86% 66% / 0.2);
-  --shadow-md: 2px 2px 4px 0px hsl(255 86% 66% / 0.2),
-    2px 2px 4px -1px hsl(255 86% 66% / 0.2);
-  --shadow-lg: 2px 2px 4px 0px hsl(255 86% 66% / 0.2),
-    2px 4px 6px -1px hsl(255 86% 66% / 0.2);
-  --shadow-xl: 2px 2px 4px 0px hsl(255 86% 66% / 0.2),
-    2px 8px 10px -1px hsl(255 86% 66% / 0.2);
+  --shadow-sm:
+    2px 2px 4px 0px hsl(255 86% 66% / 0.2), 2px 1px 2px -1px
+    hsl(255 86% 66% / 0.2);
+  --shadow:
+    2px 2px 4px 0px hsl(255 86% 66% / 0.2), 2px 1px 2px -1px
+    hsl(255 86% 66% / 0.2);
+  --shadow-md:
+    2px 2px 4px 0px hsl(255 86% 66% / 0.2), 2px 2px 4px -1px
+    hsl(255 86% 66% / 0.2);
+  --shadow-lg:
+    2px 2px 4px 0px hsl(255 86% 66% / 0.2), 2px 4px 6px -1px
+    hsl(255 86% 66% / 0.2);
+  --shadow-xl:
+    2px 2px 4px 0px hsl(255 86% 66% / 0.2), 2px 8px 10px -1px
+    hsl(255 86% 66% / 0.2);
   --shadow-2xl: 2px 2px 4px 0px hsl(255 86% 66% / 0.5);
 }
 

@@ -1,17 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
 export class TypedApiClient {
-    constructor(baseURL = "http://localhost:9095", config) {
+    constructor(baseURL = 'http://localhost:9095', config) {
         this.client = axios.create({
             baseURL,
             ...config,
         });
         // Add request interceptor for authentication
-        this.client.interceptors.request.use((config) => {
+        this.client.interceptors.request.use(config => {
             // You can add auth headers here if needed
             return config;
         });
         // Add response interceptor for error handling
-        this.client.interceptors.response.use((response) => response, (error) => {
+        this.client.interceptors.response.use(response => response, error => {
             // Handle common errors here
             return Promise.reject(error);
         });

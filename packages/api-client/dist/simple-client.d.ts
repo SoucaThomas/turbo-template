@@ -1,5 +1,5 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import type { paths } from "./types";
+import { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios';
+import type { paths } from './types';
 type ApiResponse<T = any> = T;
 export declare class SimpleApiClient {
     private client;

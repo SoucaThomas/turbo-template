@@ -1,52 +1,55 @@
 {
-    "$schema": "https://turbo.build/schema.json",
-    "ui": "tui",
-    "tasks": {
-        "build": {
-            "dependsOn": ["^build"],
-            "inputs": ["$TURBO_DEFAULT$", ".env*"],
-            "outputs": ["dist/**"]
-        },
-        "lint": {
-            "dependsOn": ["^lint"]
-        },
-        "lint:fix": {
-            "dependsOn": ["^lint:fix"],
-            "cache": false
-        },
-        "fm:check": {
-            "dependsOn": ["^fm:check"]
-        },
-        "fm:fix": {
-            "dependsOn": ["^fm:fix"],
-            "cache": false
-        },
-        "check-types": {
-            "dependsOn": ["^check-types"]
-        },
-        "generate-types": {
-            "cache": false,
-            "persistent": false
-        },
-        "dev": {
-            "cache": false,
-            "persistent": true
-        },
-        "db:push": {
-            "cache": false,
-            "persistent": true
-        },
-        "db:studio": {
-            "cache": false,
-            "persistent": true
-        },
-        "db:migrate": {
-            "cache": false,
-            "persistent": true
-        },
-        "db:generate": {
-            "cache": false,
-            "persistent": true
-        }
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "lint:fix": {
+      "dependsOn": ["^lint:fix"],
+      "cache": false
+    },
+    "format": {
+      "dependsOn": ["^format"]
+    },
+    "format:check": {
+      "dependsOn": ["^format:check"]
+    },
+    "format:fix": {
+      "dependsOn": ["^format:fix"],
+      "cache": false
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "generate-types": {
+      "cache": false,
+      "persistent": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "db:push": {
+      "cache": false,
+      "persistent": true
+    },
+    "db:studio": {
+      "cache": false,
+      "persistent": true
+    },
+    "db:migrate": {
+      "cache": false,
+      "persistent": true
+    },
+    "db:generate": {
+      "cache": false,
+      "persistent": true
     }
+  }
 }

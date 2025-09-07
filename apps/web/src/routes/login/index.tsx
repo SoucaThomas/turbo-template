@@ -1,7 +1,7 @@
+import { createFileRoute } from '@tanstack/react-router';
+import { useEffect, useState } from 'react';
 import SignInForm from '@/components/sign-in-form';
 import SignUpForm from '@/components/sign-up-form';
-import { createFileRoute } from '@tanstack/react-router';
-import { useState, useEffect } from 'react';
 
 export const Route = createFileRoute('/login/')({
   component: RouteComponent,

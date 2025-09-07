@@ -1,7 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { DATABASE_CONNECTION } from './database-connection';
 import { PrismaClient } from '@prisma/client';
+import { DATABASE_CONNECTION } from './database-connection';
 
 @Global()
 @Module({

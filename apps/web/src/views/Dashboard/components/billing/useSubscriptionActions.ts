@@ -1,12 +1,12 @@
+import {
+  FrontendPlans,
+  getPriceDifference,
+  isUpgrade,
+  PLAN_IDS,
+} from '@turbo-template/stripe-plans';
 import { useState } from 'react';
 import { authClient } from '@/lib/auth-client';
 import { showToast } from '@/lib/toast';
-import {
-  FrontendPlans,
-  isUpgrade,
-  getPriceDifference,
-  PLAN_IDS,
-} from '@turbo-template/stripe-plans';
 
 // Use shared plans from the package
 export const AVAILABLE_PLANS = FrontendPlans;

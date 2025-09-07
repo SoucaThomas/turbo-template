@@ -1,3 +1,9 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Shield } from 'lucide-react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import type { z } from 'zod';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -5,18 +11,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Shield } from 'lucide-react';
-import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { useState } from 'react';
-import { changePasswordSchema } from '../../schema';
 import { authClient } from '@/lib/auth-client';
 import { showToast } from '@/lib/toast';
+import { changePasswordSchema } from '../../schema';
 import SessionManagement from './SessionManagement';
 
 type ChangePasswordFormData = z.infer<typeof changePasswordSchema>;

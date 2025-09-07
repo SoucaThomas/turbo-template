@@ -1,86 +1,107 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import type { paths, operations } from "./types";
+import axios, {
+  type AxiosInstance,
+  type AxiosRequestConfig,
+  type AxiosResponse,
+} from 'axios';
+import type { operations, paths } from './types';
 
 // Auto-generated API client based on OpenAPI spec
 export class ApiClient {
-    private client: AxiosInstance;
+  private client: AxiosInstance;
 
-    constructor(baseURL: string = "http://localhost:9095", config?: AxiosRequestConfig) {
-        this.client = axios.create({
-            baseURL,
-            ...config,
-        });
+  constructor(
+    baseURL: string = 'http://localhost:9095',
+    config?: AxiosRequestConfig
+  ) {
+    this.client = axios.create({
+      baseURL,
+      ...config,
+    });
 
-        // Add request interceptor for authentication
-        this.client.interceptors.request.use((config) => {
-            // You can add auth headers here if needed
-            return config;
-        });
+    // Add request interceptor for authentication
+    this.client.interceptors.request.use(config => {
+      // You can add auth headers here if needed
+      return config;
+    });
 
-        // Add response interceptor for error handling
-        this.client.interceptors.response.use(
-            (response) => response,
-            (error) => {
-                // Handle common errors here
-                return Promise.reject(error);
-            }
-        );
-    }
+    // Add response interceptor for error handling
+    this.client.interceptors.response.use(
+      response => response,
+      error => {
+        // Handle common errors here
+        return Promise.reject(error);
+      }
+    );
+  }
 
-    // Auto-generated upload method based on OpenAPI spec
-    async upload(
-        file: File,
-        config?: AxiosRequestConfig
-    ): Promise<
-        operations["UploadController_uploadFile"]["responses"]["201"]["content"]["application/json"]
-    > {
-        const formData = new FormData();
-        formData.append("file", file);
+  // Auto-generated upload method based on OpenAPI spec
+  async upload(
+    file: File,
+    config?: AxiosRequestConfig
+  ): Promise<
+    operations['UploadController_uploadFile']['responses']['201']['content']['application/json']
+  > {
+    const formData = new FormData();
+    formData.append('file', file);
 
-        return this.post("/api/upload", formData, {
-            ...config,
-            headers: {
-                "Content-Type": "multipart/form-data",
-                ...config?.headers,
-            },
-        });
-    }
+    return this.post('/api/upload', formData, {
+      ...config,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        ...config?.headers,
+      },
+    });
+  }
 
-    // Generic HTTP methods for other endpoints
-    async get<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
-        const response = await this.client.get<T>(url, config);
-        return response.data;
-    }
+  // Generic HTTP methods for other endpoints
+  async get<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    const response = await this.client.get<T>(url, config);
+    return response.data;
+  }
 
-    async post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
-        const response = await this.client.post<T>(url, data, config);
-        return response.data;
-    }
+  async post<T = any>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
+    const response = await this.client.post<T>(url, data, config);
+    return response.data;
+  }
 
-    async put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
-        const response = await this.client.put<T>(url, data, config);
-        return response.data;
-    }
+  async put<T = any>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
+    const response = await this.client.put<T>(url, data, config);
+    return response.data;
+  }
 
-    async patch<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
-        const response = await this.client.patch<T>(url, data, config);
-        return response.data;
-    }
+  async patch<T = any>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
+    const response = await this.client.patch<T>(url, data, config);
+    return response.data;
+  }
 
-    async delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
-        const response = await this.client.delete<T>(url, config);
-        return response.data;
-    }
+  async delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    const response = await this.client.delete<T>(url, config);
+    return response.data;
+  }
 
-    // Generic method for advanced usage
-    async request<T = any>(config: AxiosRequestConfig): Promise<AxiosResponse<T>> {
-        return this.client.request(config);
-    }
+  // Generic method for advanced usage
+  async request<T = any>(
+    config: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
+    return this.client.request(config);
+  }
 
-    // Get the underlying axios instance for advanced usage
-    getAxiosInstance(): AxiosInstance {
-        return this.client;
-    }
+  // Get the underlying axios instance for advanced usage
+  getAxiosInstance(): AxiosInstance {
+    return this.client;
+  }
 }
 
 // Export a default instance

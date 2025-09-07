@@ -1,3 +1,5 @@
+import { AlertCircle, User } from 'lucide-react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -10,9 +12,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { authClient } from '@/lib/auth-client';
 import { showToast } from '@/lib/toast';
-import { AlertCircle } from 'lucide-react';
-import { User } from 'lucide-react';
-import { useState } from 'react';
 
 interface ProfileInformationProps {
   name: string;

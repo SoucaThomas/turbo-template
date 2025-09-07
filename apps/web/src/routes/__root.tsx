@@ -1,20 +1,20 @@
-import Header from '@/components/layout/Header';
-import Loader from '@/components/loader';
-import { ThemeProvider } from '@/components/theme-provider';
-import { Toaster } from '@/components/ui/sonner';
 import { TanStackDevtools } from '@tanstack/react-devtools';
+import { QueryClientProvider } from '@tanstack/react-query';
 import {
+  createRootRouteWithContext,
   HeadContent,
   Outlet,
-  createRootRouteWithContext,
-  useRouterState,
   useLocation,
+  useRouterState,
 } from '@tanstack/react-router';
 import {
   TanStackRouterDevtools,
   TanStackRouterDevtoolsPanel,
 } from '@tanstack/react-router-devtools';
-import { QueryClientProvider } from '@tanstack/react-query';
+import Header from '@/components/layout/Header';
+import Loader from '@/components/loader';
+import { ThemeProvider } from '@/components/theme-provider';
+import { Toaster } from '@/components/ui/sonner';
 import { queryClient } from '@/lib/query-client';
 import '../index.css';
 

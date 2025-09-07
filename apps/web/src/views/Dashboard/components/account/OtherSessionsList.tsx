@@ -1,7 +1,7 @@
-import { Card, CardContent } from '@/components/ui/card';
 import { XCircle } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import type { Session } from '@/lib/auth-client';
 import { SessionCard } from './SessionCard';
-import { type Session } from '@/lib/auth-client';
 
 interface OtherSessionsListProps {
   otherSessions: Session[];

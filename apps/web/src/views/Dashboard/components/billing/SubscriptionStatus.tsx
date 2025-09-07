@@ -1,5 +1,5 @@
+import { AlertTriangle, Clock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Clock, AlertTriangle } from 'lucide-react';
 
 interface SubscriptionStatusProps {
   status: string;

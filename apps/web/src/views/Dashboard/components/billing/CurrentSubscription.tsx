@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { authClient } from '@/lib/auth-client';
 import { showToast } from '@/lib/toast';
-import SubscriptionHeader from './SubscriptionHeader';
-import SubscriptionStatusDisplay from './SubscriptionStatusDisplay';
-import SubscriptionDetails from './SubscriptionDetails';
-import WarningMessages from './WarningMessages';
 import ActionButtons from './ActionButtons';
 import NoSubscription from './NoSubscription';
+import SubscriptionDetails from './SubscriptionDetails';
+import SubscriptionHeader from './SubscriptionHeader';
+import SubscriptionStatusDisplay from './SubscriptionStatusDisplay';
+import WarningMessages from './WarningMessages';
 
 interface Subscription {
   id: string;

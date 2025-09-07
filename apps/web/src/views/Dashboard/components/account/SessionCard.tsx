@@ -1,9 +1,12 @@
 import {
-  getSessionStatus,
-  parseUserAgent,
-  formatSessionDate,
-} from '@/lib/session-utils';
-import { Badge } from '@/components/ui/badge';
+  Clock,
+  Globe,
+  LogOut,
+  MapPin,
+  Monitor,
+  Smartphone,
+  Tablet,
+} from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,17 +18,14 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-  Clock,
-  Globe,
-  LogOut,
-  MapPin,
-  Monitor,
-  Smartphone,
-  Tablet,
-} from 'lucide-react';
 import type { Session } from '@/lib/session-api';
+import {
+  formatSessionDate,
+  getSessionStatus,
+  parseUserAgent,
+} from '@/lib/session-utils';
 
 interface SessionCardProps {
   session: Session;

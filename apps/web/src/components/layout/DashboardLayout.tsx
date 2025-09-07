@@ -1,15 +1,15 @@
-import type { ReactNode } from 'react';
 import { Link } from '@tanstack/react-router';
 import {
+  CreditCard,
   Home,
-  Settings,
+  LayoutDashboard,
   LogOut,
   Menu,
-  LayoutDashboard,
-  CreditCard,
+  Settings,
 } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { ModeToggle } from '@/components/mode-toggle';
 import { Button } from '@/components/ui/button';
-import { authClient } from '@/lib/auth-client';
 import {
   Sidebar,
   SidebarContent,
@@ -25,7 +25,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
-import { ModeToggle } from '@/components/mode-toggle';
+import { authClient } from '@/lib/auth-client';
 
 interface DashboardLayoutProps {
   children: ReactNode;

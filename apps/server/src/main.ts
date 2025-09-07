@@ -1,11 +1,11 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { toNodeHandler } from 'better-auth/node';
 import { AuthService } from '@mguay/nestjs-better-auth';
 import { ConfigService } from '@nestjs/config';
-import * as express from 'express';
+import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { toNodeHandler } from 'better-auth/node';
+import * as express from 'express';
+import { AppModule } from './app.module';
 import { LoggingInterceptor } from './interceptors';
 
 async function bootstrap() {

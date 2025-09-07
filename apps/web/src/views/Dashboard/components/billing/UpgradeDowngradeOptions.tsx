@@ -1,4 +1,4 @@
-import { TrendingUp, TrendingDown, Users } from 'lucide-react';
+import { TrendingDown, TrendingUp, Users } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 

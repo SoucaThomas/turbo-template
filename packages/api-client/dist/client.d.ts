@@ -1,5 +1,5 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import type { paths } from "./types";
+import { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios';
+import type { paths } from './types';
 export declare class ApiClient {
     private client;
     constructor(baseURL?: string, config?: AxiosRequestConfig);

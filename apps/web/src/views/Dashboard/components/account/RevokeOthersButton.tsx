@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { LogOut } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,7 +10,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { LogOut } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface RevokeOthersButtonProps {
   onRevokeOtherSessions: () => void;
